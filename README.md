@@ -16,7 +16,7 @@
   examples/
 ```
 
-依赖：Python 3.8+，`pip install -r requirements.txt`（只有 lxml）。核对公式需要 Windows 和本机 Excel；没有时可以做 Python 复算，但公式未经 Excel 核对，需要在汇报里说明。
+依赖：Python 3.9+，`pip install -r requirements.txt`（只有 lxml）。核对公式需要 Windows 和本机 Excel；没有时可以做 Python 复算，但公式未经 Excel 核对，需要在汇报里说明。
 
 ## 命令
 
