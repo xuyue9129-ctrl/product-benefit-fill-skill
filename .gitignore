@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+# never commit workbooks, fetched data, logs or anything session-like
+*.xlsx
+*.xls
+*.docx
+*.pdf
+*.session
+*.log
+*.jsonl
+work/
+PLATFORM_STOP.json

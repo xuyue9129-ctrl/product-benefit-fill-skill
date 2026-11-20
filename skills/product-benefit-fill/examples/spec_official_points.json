@@ -1,0 +1,6 @@
+{
+ "result_row": 11,
+ "label": "示例：累积生息—虚构的官方说明书披露点（仅第10、20、40年），返本、翻倍年度之前有未披露年度，不填",
+ "source": "示例来源：虚构数据，仅用于演示“未披露年度写 null”",
+ "accumulate": {"balance": [null, null, null, null, null, null, null, null, null, 20000.0, null, null, null, null, null, null, null, null, null, 50000.0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 120000.0, null, null, null, null, null]}
+}

@@ -1,0 +1,57 @@
+{
+ "data": {
+  "pbId": 999001,
+  "initData": {
+   "inputData": {
+    "productGroupList": [
+     {
+      "key": "allMainInsData",
+      "prodOrderList": [
+       {
+        "key": 5001,
+        "name": "示例终身寿险（分红型）",
+        "mulInsOrderList": [
+         {
+          "key": 7001,
+          "required": true,
+          "name": "示例终身寿险（分红型）",
+          "eleOrderList": [
+           {
+            "key": "pPeriod",
+            "value": "b5",
+            "opts": [
+             {
+              "val": "a1000",
+              "desc": "趸交"
+             },
+             {
+              "val": "b5",
+              "desc": "5年交"
+             }
+            ]
+           },
+           {
+            "key": "iDuration",
+            "value": "a999",
+            "opts": [
+             {
+              "val": "a999",
+              "desc": "终身"
+             }
+            ]
+           },
+           {
+            "key": "baof",
+            "value": 10000
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
