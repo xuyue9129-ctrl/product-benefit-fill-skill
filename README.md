@@ -6,36 +6,54 @@
 
 ## 安装
 
-把 `skills/product-benefit-fill` 整个目录复制到 Agent 的技能目录，例如：
+本技能不依赖任何特定 Agent 的工具、账号或插件。下载仓库 ZIP 并解压，或克隆仓库；在仓库目录执行：
 
 ```text
-你的工作区/.factory/skills/product-benefit-fill/      （或 ~/.agents/skills/product-benefit-fill/）
+python install.py --dest "你的Agent技能目录/product-benefit-fill"
+```
+
+`--dest` 是技能的完整目标目录，由你按照 Agent 的说明指定；目录已存在时不会覆盖。也可以直接复制 `skills/product-benefit-fill` 整个目录。安装后的内容为：
+
+```text
+你的Agent技能目录/product-benefit-fill/
   SKILL.md
   references/
   scripts/
   examples/
+  requirements.txt
 ```
 
-依赖：Python 3.9+，`pip install -r requirements.txt`（只有 lxml）。核对公式需要 Windows 和本机 Excel；没有时可以做 Python 复算，但公式未经 Excel 核对，需要在汇报里说明。
+进入安装后的目录，安装依赖并运行独立自检（只用临时合成数据，不联网）：
+
+```text
+python -m pip install -r requirements.txt
+python scripts/selftest.py
+```
+
+- Python 3.9+，唯一第三方依赖为 lxml。Windows 可用 `py`，macOS/Linux 可用 `python3` 替换命令里的 `python`；使用虚拟环境时，安装依赖和执行脚本必须用同一个解释器。
+- Windows、Linux、macOS 均可盘点、填表和 Python 复算；Excel 公式全量重算仅支持 Windows + 桌面版 Excel。其他环境用 `verify --no-excel`，不能声称完成 Excel 重算。
+- 支持读取 `SKILL.md` 的 Agent：把目录放入其官方技能目录，重新加载后使用。不支持技能自动发现的 Agent：直接把 `SKILL.md` 作为上下文，要求它按文档执行。Agent 必须能读取本地文件、执行 Python；纯聊天网页不能独立运行脚本。
+- 完整可复制的指令、迁移边界见 [跨电脑与跨 Agent 使用](skills/product-benefit-fill/references/portability.md)。
 
 ## 命令
 
-```bash
-PB="python skills/product-benefit-fill/scripts/pbfill.py"
-$PB inspect 工作簿.xlsx --csv 待补清单.csv                      # 盘点
-$PB fill 工作簿.xlsx --spec specs/*.json --dry-run              # 试填
-$PB fill 工作簿.xlsx --spec specs/*.json --out 新.xlsx --report report.json
-$PB verify 新.xlsx --base 工作簿.xlsx --report report.json      # Excel 重算核对
-$PB audit 工作簿.xlsx                                           # 用逐年块复算全部已填指标
+以下在安装后的技能目录执行，Windows PowerShell 与 macOS/Linux 终端均适用：
+
+```text
+python scripts/pbfill.py inspect "工作簿.xlsx" --csv "待补清单.csv"
+python scripts/pbfill.py fill "工作簿.xlsx" --spec "specs/*.json" --dry-run
+python scripts/pbfill.py fill "工作簿.xlsx" --spec "specs/*.json" --out "新.xlsx" --report report.json
+python scripts/pbfill.py verify "新.xlsx" --base "工作簿.xlsx" --report report.json
+python scripts/pbfill.py audit "工作簿.xlsx"
 ```
 
 用合成示例走一遍：
 
-```bash
-python skills/product-benefit-fill/examples/make_demo_workbook.py demo.xlsx
-$PB inspect demo.xlsx
-$PB fill demo.xlsx --spec skills/product-benefit-fill/examples/spec_dividend.json skills/product-benefit-fill/examples/spec_guarantee.json --out demo_filled.xlsx --report demo_report.json
-$PB verify demo_filled.xlsx --base demo.xlsx --report demo_report.json
+```text
+python examples/make_demo_workbook.py demo.xlsx
+python scripts/pbfill.py inspect demo.xlsx
+python scripts/pbfill.py fill demo.xlsx --spec examples/spec_dividend.json examples/spec_guarantee.json --out demo_filled.xlsx --report demo_report.json
+python scripts/pbfill.py verify demo_filled.xlsx --base demo.xlsx --report demo_report.json
 ```
 
 ## 脚本保证什么

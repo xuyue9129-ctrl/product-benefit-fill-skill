@@ -15,6 +15,14 @@ metadata:
 
 `<SKILL_DIR>` 指本文件所在目录，下文 `PB = python <SKILL_DIR>/scripts/pbfill.py`（每个子命令都可加 `-h`）。
 
+## 环境与迁移（换电脑或 Agent 时先做）
+
+1. 本技能不依赖特定 Agent。需要 Python 3.9+，以及读取本地文件、执行命令的权限；找资料另需浏览器或联网搜索能力。
+2. 在本目录运行 `python -m pip install -r requirements.txt`；然后运行 `python scripts/selftest.py`，确认独立安装后的合成示例通过。
+3. 下文 `PB` 只是文档缩写，不是可直接执行的系统命令。实际调用时用当前 Python 解释器加脚本绝对路径；路径含空格时加引号。通配符参数加引号，如 `--spec "work/specs/*.json"`。不要复制他人电脑的绝对路径。
+4. Windows 可用 `py`，macOS/Linux 可用 `python3`；依赖必须安装到同一个解释器中。macOS/Linux 上 `verify` 加 `--no-excel`，只能做 Python 复算；完整 Excel 重算必须在 Windows + 桌面版 Excel 执行。
+5. 不支持技能自动发现的 Agent 也可读取本文件，按相同流程执行。完整说明见 [references/portability.md](references/portability.md)。
+
 ## 一、不可违反的规则
 
 1. **不编数、不插值、不外推。** 缺哪一年就是缺哪一年；返本/翻倍年度之前有缺数年度时该指标保持待补。
