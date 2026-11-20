@@ -9,8 +9,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        python: ['3.9', '3.13']
+        include:
+          # the Ubuntu runner image no longer offers Python 3.9; the oldest supported version is tested on Windows
+          - {os: windows-latest, python: '3.9'}
+          - {os: windows-latest, python: '3.13'}
+          - {os: ubuntu-latest, python: '3.13'}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
