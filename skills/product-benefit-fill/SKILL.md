@@ -2,7 +2,7 @@
 name: product-benefit-fill
 description: 把保险产品评价工作簿里的“产品利益信息——结果”和“产品利益信息——底稿”两张表填完整并核对：盘点待补指标，按产品查找官方条款/现金价值表/产品说明书，取保证利益和分红利益（累积生息、交清增额）的逐年数据，计算 IRR、返本年度、翻倍年度，写入底稿逐年块和汇总行、结果表口径标记，另存新文件并用 Excel 全量重算核对，最后更新待补清单和口径说明。含计划书平台公开预览利益演示接口的取数脚本（不登录、不生成计划书、遇拒即停、须使用人同意）。Use when filling or auditing the product benefit sheets (guaranteed / dividend IRR, payback year, doubling year) of a life-insurance product evaluation workbook.
 license: MIT
-compatibility: Python 3.8+ 与 lxml。核对公式需要 Windows + 本机 Excel（没有时只能做 Python 复算，须在汇报里说明）。平台取数只用 Python 标准库。
+compatibility: Python 3.9+ 与 lxml。核对公式需要 Windows + 本机 Excel（没有时只能做 Python 复算，须在汇报里说明）。平台取数只用 Python 标准库。
 metadata:
   author: xuyue9129-ctrl
   version: "1.0.0"
